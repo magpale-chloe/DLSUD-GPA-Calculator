@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+    background-image: url('nailong.png');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #f0c62e;
+    padding: 15px;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    margin: 100px auto 20px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 1000px;  
+    overflow-y: auto;
+    box-sizing: border-box;
+    font-size: 14px;
+    position: relative;
+}
+
+.top-controls {
+    position: absolute;
+    top: 70px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px; 
+    z-index: 20;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dropdown {
+    position: relative; 
+}
+
+.dropbtn {
+    background-color: #f0e62e;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.dropbtn:hover {
+    background-color: #e0d400;
+}
+
+.dropdown-menu {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 6px 0;
+    position: absolute;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    min-width: 160px;
+    border-radius: 8px;
+    z-index: 100;
+}
+
+.dropdown-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(240, 230, 46, 0.3);
+}
+
+.dropdown-menu[hidden] {
+    display: none;
+}
+
+#gpa-display {
+    background: #f0c62e;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 8px 10px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+td:first-child {
+    font-weight: bold;
+}
+
+td input.textbox {
+    width: 60px;
+    padding: 6px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.gpa-btn {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f0c62e;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.gpa-btn:hover {
+    background-color: #e0a400;
+}
+
+footer {
+    background-color: #f0c62e;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* RESPONSIVE AYEEEEEE */
+@media screen and (max-width: 900px) {
+    .glass {
+        width: 90%;
+        margin: 120px auto 20px;
+        font-size: 13px;
+    }
+    .top-controls {
+        top: 50px;
+        gap: 15px;
+    }
+    .dropbtn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    #gpa-display {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .glass {
+        width: 95%;
+        margin: 140px auto 20px;
+        font-size: 12px;
+    }
+    .top-controls {
+        flex-direction: column;
+        top: 30px;
+    }
+    .dropbtn {
+        width: 100%;
+        text-align: center;
+    }
+    #gpa-display {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    table td input.textbox {
+        width: 50px;
+        padding: 4px;
+    }
+    .gpa-btn {
+        padding: 10px 24px;
+        font-size: 15px;
+    }
+}

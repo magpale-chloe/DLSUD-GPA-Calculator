@@ -104,15 +104,39 @@ button, input, select { font: inherit; color: inherit; }
 }
 
 .brand-mark {
+    position: relative;
     display: grid;
     place-items: center;
-    width: 32px; height: 32px;
-    border-radius: 9px;
-    background: #fff;
-    color: var(--green);
-    font-weight: 800;
-    font-size: 18px;
+    width: 36px; height: 36px;
+    padding: 4px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.06));
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.08),
+        0 6px 16px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
     transition: transform 0.4s var(--spring);
+}
+
+.brand-mark img {
+    display: block;
+    width: 100%; height: 100%;
+    border-radius: 7px;
+    object-fit: cover;
+}
+
+/* glossy sheen across the glass */
+.brand-mark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 45%);
+    pointer-events: none;
 }
 
 .brand:hover .brand-mark { transform: rotate(-8deg) scale(1.06); }
@@ -1332,3 +1356,63 @@ button, input, select { font: inherit; color: inherit; }
     }
     html { scroll-behavior: auto; }
 }
+
+/* ================= Glass ================= */
+:root {
+    --glass: rgba(255, 255, 255, 0.55);
+    --glass-inner: rgba(255, 255, 255, 0.45);
+    --glass-field: rgba(255, 255, 255, 0.7);
+    --glass-edge: rgba(255, 255, 255, 0.7);
+    --glass-line: rgba(0, 61, 36, 0.1);
+    --glass-shine: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 10px 34px -12px rgba(0, 61, 36, 0.22);
+}
+
+:root[data-theme="dark"] {
+    --glass: rgba(22, 34, 28, 0.5);
+    --glass-inner: rgba(255, 255, 255, 0.035);
+    --glass-field: rgba(255, 255, 255, 0.05);
+    --glass-edge: rgba(255, 255, 255, 0.1);
+    --glass-line: rgba(255, 255, 255, 0.07);
+    --glass-shine: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.7);
+}
+
+/* Soft colour behind the page so the frosted cards have something to blur */
+body {
+    background:
+        radial-gradient(40vmax 40vmax at 8% 45%, rgba(18, 161, 80, 0.16), transparent 70%),
+        radial-gradient(35vmax 35vmax at 95% 75%, rgba(126, 226, 161, 0.14), transparent 70%),
+        radial-gradient(30vmax 30vmax at 55% 110%, rgba(0, 112, 60, 0.14), transparent 70%),
+        var(--bg);
+    background-attachment: fixed;
+}
+
+.block, .scorecard {
+    background: var(--glass);
+    border: 1px solid var(--glass-edge);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: inset 0 1px 0 var(--glass-shine), var(--glass-shadow);
+}
+
+/* Inner surfaces: lighter frosted layers */
+.plan-col, .sheet, .switch, .ladder li {
+    background: var(--glass-inner);
+    border-color: var(--glass-line);
+}
+
+.sheet-head, .sheet-foot, .scale th {
+    background: var(--glass-inner);
+    border-color: var(--glass-line);
+}
+
+.row input, .row select, .field input, .goal-chips button, .readout {
+    background: var(--glass-field);
+    border-color: var(--glass-line);
+}
+
+.goal-chips button.active { background: var(--green); border-color: var(--green); }
+.row select option { background: var(--panel); color: var(--text); }
+.ring-bg { stroke: var(--glass-line); }
+.readout { border-left-color: var(--green-mid); }
